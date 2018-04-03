@@ -1,0 +1,88 @@
+﻿@model HoldAlt.Models.StockTrade
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>StockTrade</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ticker)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ticker)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TradeDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TradeDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Account)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AmountTraded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmountTraded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BoughtYes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BoughtYes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Commission)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Commission)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

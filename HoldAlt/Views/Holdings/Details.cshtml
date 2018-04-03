@@ -1,0 +1,42 @@
+﻿@model HoldAlt.Models.Holding
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Holding</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CoinID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoinID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CoinAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoinAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExchangeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExchangeID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HoldingID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

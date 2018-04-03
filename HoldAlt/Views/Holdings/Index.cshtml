@@ -1,0 +1,134 @@
+﻿@model IEnumerable<HoldAlt.ViewModels.HoldingVM>
+
+@{
+    ViewBag.Title = "Holdings";
+    ViewBag.total = 0;
+    ViewBag.value = 0;
+    ViewBag.ctotal = 0;
+    ViewBag.cvalue = 0;
+}
+
+<h2>My AltCoin Holdings</h2>
+@*
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+*@
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CoinName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoinSymbol)
+        </th>
+        <th>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ / Coin
+        </th>
+        <th>
+            Avg $ / Coin
+        </th>
+        <th>
+            BTC / Coin
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoinAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExchangeName)
+        </th>
+        <th>
+            Cost $
+        </th>
+        <th>
+            Price Today
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Percent1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Percent7)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoinName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoinSymbol)
+            </td>
+            <td style="text-align:right; padding-right:30px; margin-left:-30px">
+                @*@Html.DisplayFor(modelItem => item.CoinValueUSD)*@
+                @String.Format("{0:#,##0.0000}", item.CoinValueUSD)
+            </td>
+            <td style="text-align:right; padding-right:30px"; margin-left:-30px">
+                @*@Html.DisplayFor(modelItem => item.CoinValueUSD)*@
+                @String.Format("{0:#,##0.0000}", item.AveragePaid)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.CoinValueBTC)*@
+                @String.Format("{0:#,##0.00000000}", item.CoinValueBTC)
+            </td>
+            <td style="text-align:right; padding-right:30px">
+                @*@Html.DisplayFor(modelItem => item.CoinAmount)*@
+                @String.Format("{0:#,##0.0000}", item.CoinAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExchangeName)
+            </td>
+            <td>
+                @{
+                    ViewBag.svalue = "";
+                    if (item.CostUSD != "")
+                    {
+                        ViewBag.cvalue = Convert.ToSingle(item.CostUSD);
+                        ViewBag.svalue = ViewBag.cvalue.ToString("0.00");
+                    }
+                }
+
+                @ViewBag.svalue
+            </td>
+            <td>
+                @{
+                    ViewBag.value = String.Format("{0:#,##0.00}", item.PriceToday);
+                    ViewBag.total += item.PriceToday;
+                }
+                @String.Format("{0:#,##0.00}", item.PriceToday)
+            </td>
+            <td>
+                @String.Format("{0:#,##0.00}", item.Percent1)
+            </td>
+            <td>
+                @String.Format("{0:#,##0.00}", item.Percent7)
+            </td>
+            <td>
+                @*
+                    @Html.ActionLink("Edit", "Edit", new { id = item.HoldingVMID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.HoldingVMID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.HoldingVMID })
+                *@
+            </td>
+        </tr>
+     }
+
+</table>
+
+<div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+       
+    </div>
+    <div class="col-md-4">
+        <h3>
+            Total:
+            @String.Format("{0:#,##0.00}", ViewBag.total)
+        </h3>
+    </div>
+</div>
+
+<p><a class="btn btn-primary" href="/Holdings/Index">Refresh &raquo;</a></p>

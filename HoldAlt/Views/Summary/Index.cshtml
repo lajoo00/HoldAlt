@@ -1,0 +1,165 @@
+﻿@model HoldAlt.ViewModels.SummaryVM
+
+@{
+    ViewBag.Title = "Summary";
+}
+
+<h2>Summary</h2>
+
+@* Coins *@
+<div class="col-md-6">
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Coin
+            </th>
+            <th>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ / Coin
+            </th>
+            <th>
+                Avg $ / Coin
+            </th>
+            <th>
+                Price Today
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Coins)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CoinName)
+                </td>
+                <td style="text-align:right; padding-right:30px; margin-left:-30px">
+                    @*@Html.DisplayFor(modelItem => item.CoinValueUSD)*@
+                    @String.Format("{0:#,##0.0000}", item.CoinValueUSD)
+                </td>
+                <td style="text-align:right; padding-right:30px" ; margin-left:-30px">
+                    @*@Html.DisplayFor(modelItem => item.CoinValueUSD)*@
+                    @String.Format("{0:#,##0.0000}", item.AveragePaid)
+                </td>
+                <td>
+                    @String.Format("{0:#,##0.00}", item.PriceToday)
+                </td>
+            </tr>
+        }
+
+    </table>
+    @* Bottom Info *@
+    <div class="row">
+        <div class="col-md-12">
+            <h3>
+                @String.Format("Coins $ {0:#,##0.00}", Model.TotalCValueToday)
+                &nbsp;&nbsp;&nbsp;
+                @String.Format("Stocks $ {0:#,##0.00}", Model.TotalSValueToday)
+
+            </h3>
+        </div>
+    </div>
+    <br /><p><a class="btn btn-primary" href="/Summary/Index">Refresh &raquo;</a></p>
+
+</div>
+
+
+@* Stocks *@
+<div class="col-md-6">
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Ticker
+            </th>
+            <th>
+                Shares
+            </th>
+            <th style="text-align:right;">
+                Cost
+            </th>
+            <th width="100">
+                Today
+            </th>
+            <th>
+                Change
+            </th>
+            <th>
+                Volume
+            </th>
+            <th>
+               ValueToday
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Stocks)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ticker)
+                </td>
+                <td width="60" style="text-align:right;padding-right:20px;">
+                    @*@Html.DisplayFor(modelItem => item.NumberShares)*@
+                    @String.Format("{0:#,##0}", item.NumberShares)
+                </td>
+                <td style="text-align:right">
+                    @*@Html.DisplayFor(modelItem => item.PricePaid)*@
+                    @String.Format("{0:#,##0.00}", item.PricePaid)
+                </td>
+                <td width="100" style="text-align:right">
+                    @*@Html.DisplayFor(modelItem => item.PriceToday)*@
+                    @String.Format("{0:#,##0.00}", item.PriceToday)
+                </td>
+                <td style="text-align:right">
+                    @*@Html.DisplayFor(modelItem => item.Change)*@
+                    @if (item.Change < 0)
+                    {
+                        <span style="color:red;">@String.Format("$ {0:#,##0.00}", item.Change)</span>
+                    }
+                    else
+                    {
+                        <span style="color:green;">@String.Format("$ {0:#,##0.00}", item.Change)</span>
+                    }
+                </td>
+                <td style="text-align:right">
+                    @*@Html.DisplayFor(modelItem => item.Volume)*@
+                    @(String.Format("{0:#,##0}", item.Volume) + "-" + String.Format("{0:#,##0}", item.AvgVol))
+                </td>
+                <td style="text-align:right">
+                    @*@Html.DisplayFor(modelItem => item.ValueToday)*@
+                    @String.Format("$ {0:#,##0.00}", item.ValueToday)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    @* Bottom Info *@
+    <div class="row">
+        <div class="col-md-12">
+            <h4>
+                DJI:
+                @Model.DJI&nbsp;&nbsp;&nbsp;
+                @if (Model.DJIC < 0)
+                {
+                    <span style="color:red;">@Model.DJIC</span>
+                }
+                else
+                {
+                    <span style="color:green;">@Model.DJIC</span>
+                }
+                &nbsp;&nbsp;&nbsp;
+                NASD:
+                @Model.NAS&nbsp;&nbsp;&nbsp;
+                @if (@Model.NASC < 0)
+                {
+                    <span style="color:red;">@Model.NASC</span>
+                }
+                else
+                {
+                    <span style="color:green;">@Model.NASC</span>
+                }
+
+            </h4>
+        </div>
+    </div>
+</div>
+
+    
+

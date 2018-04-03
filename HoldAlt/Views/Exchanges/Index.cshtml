@@ -1,0 +1,39 @@
+﻿@model IEnumerable<HoldAlt.Models.Exchange>
+
+@{
+    ViewBag.Title = "Exchanges";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ExchangeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.URL)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExchangeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.URL)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ExchangeID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ExchangeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ExchangeID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<HoldAlt.Models.AltCoin>
+
+@{
+    ViewBag.Title = "Available Coins";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AltCoinID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoinName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoinSymbol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.APICode)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AltCoinID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoinName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoinSymbol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.APICode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AltCoinID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AltCoinID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AltCoinID })
+        </td>
+    </tr>
+}
+
+</table>

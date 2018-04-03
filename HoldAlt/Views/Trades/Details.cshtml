@@ -1,0 +1,90 @@
+﻿@model HoldAlt.Models.Trade
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Trade</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CoinID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoinID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TradeDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TradeDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExchangeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExchangeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AmountTraded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmountTraded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BoughtYes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BoughtYes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceBTC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceBTC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceUSD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceUSD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Commission)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Commission)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommissionCoinID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommissionCoinID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TradeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

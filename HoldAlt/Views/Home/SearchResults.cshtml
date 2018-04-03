@@ -1,0 +1,35 @@
+﻿@model IEnumerable<String>
+
+
+@{
+    ViewBag.Title = "TV Shows";
+}
+
+<h2>TV Shows</h2>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.Label("TV Show")
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item)
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
